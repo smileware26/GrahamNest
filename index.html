@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graham Nest Costing</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand-mark">♡</div>
+  <div><p class="eyebrow">HOMEMADE DESSERT COSTING</p><h1>Graham Nest</h1><p class="subtitle">Recipe costing, pricing & profit calculator</p></div>
+  <button id="resetBtn" class="button button-light" type="button">Reset sample</button>
+</header>
+
+<main class="page">
+  <section class="hero-grid">
+    <article class="panel intro">
+      <div class="mini-label">YOUR RECIPE WORKSPACE</div>
+      <h2>Make every batch count.</h2>
+      <p>Track ingredient expenses, calculate the cost per piece, and set a selling price that works for your small business.</p>
+      <div class="chips"><span>₱ Philippine peso</span><span>Live calculations</span><span>Auto-saved</span></div>
+    </article>
+    <article class="panel settings">
+      <h3>Batch details</h3>
+      <div class="field-grid">
+        <label>Recipe / product name<input id="recipeName" value="Graham Nest" /></label>
+        <label>Total yield (pieces)<input id="yield" type="number" min="1" step="1" value="22" /></label>
+        <label>Selling price per piece (₱)<input id="sellingPrice" type="number" min="0" step="0.01" value="10" /></label>
+        <label>Currency<select id="currency"><option value="₱">₱ Philippine peso</option><option value="$">$ US dollar</option></select></label>
+      </div>
+    </article>
+  </section>
+
+  <section class="summary-grid">
+    <article class="metric"><div class="metric-icon">🧁</div><div><p>Total yield</p><strong id="yieldOut">22 <small>pcs</small></strong><span>Finished pieces per batch</span></div></article>
+    <article class="metric"><div class="metric-icon">🏷️</div><div><p>Selling price</p><strong id="priceOut">₱10.00 <small>/pc</small></strong><span>Price customers pay</span></div></article>
+    <article class="metric"><div class="metric-icon">🧾</div><div><p>Total batch cost</p><strong id="costOut">₱107.00</strong><span>Ingredients + packaging</span></div></article>
+    <article class="metric profit"><div class="metric-icon">📈</div><div><p>Estimated profit</p><strong id="profitOut">₱113.00</strong><span>Sales minus batch cost</span></div></article>
+  </section>
+
+  <section class="panel table-panel">
+    <div class="section-heading">
+      <div><p class="eyebrow">COST BREAKDOWN</p><h2>Ingredients & supplies</h2><p class="muted">Edit the package size, package price, and amount used. Totals update automatically.</p></div>
+      <button id="addRowBtn" class="button button-primary" type="button">＋ Add ingredient</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Ingredient / supply</th><th>Package amount</th><th>Package price</th><th>Unit cost</th><th>Amount used</th><th>Calculation</th><th>Total cost</th><th></th>
+        </tr></thead>
+        <tbody id="ingredientRows"></tbody>
+        <tfoot><tr><td colspan="6" class="total-label">TOTAL BATCH COST</td><td id="tableTotal" class="total-value">₱107.00</td><td></td></tr></tfoot>
+      </table>
+    </div>
+    <div class="table-actions"><button id="addCategoryBtn" class="button button-outline" type="button">＋ Add section heading</button><button id="exportBtn" class="button button-outline" type="button">Export CSV</button></div>
+  </section>
+
+  <section class="results-grid">
+    <article class="panel results-card">
+      <p class="eyebrow">BATCH SUMMARY</p><h2>Your costing at a glance</h2>
+      <div class="result-line"><span>Total ingredient & supply cost</span><strong id="resultCost">₱107.00</strong></div>
+      <div class="result-line"><span>Cost per piece</span><strong id="costPerPiece">₱4.86</strong></div>
+      <div class="result-line"><span>Total sales if all pieces sell</span><strong id="totalSales">₱220.00</strong></div>
+      <div class="result-line"><span>Estimated batch profit</span><strong id="batchProfit">₱113.00</strong></div>
+      <div class="result-line"><span>Profit per piece</span><strong id="profitPerPiece">₱5.14</strong></div>
+      <div class="result-line"><span>Profit margin</span><strong id="profitMargin">51.36%</strong></div>
+    </article>
+    <article class="panel tip-card">
+      <div class="tip-icon">♡</div><p class="eyebrow">PRICING NOTE</p><h2 id="pricingTitle">You're making a profit!</h2>
+      <p id="pricingMessage">At your current selling price, your batch earns an estimated profit. Remember to include other expenses such as electricity, labor, delivery, and spoilage if they apply.</p>
+      <label class="check-row"><input id="includeOverhead" type="checkbox"> Add overhead cost per batch</label>
+      <label class="overhead-field">Overhead amount (₱)<input id="overhead" type="number" min="0" step="0.01" value="0" disabled></label>
+      <button id="saveBtn" class="button button-primary full" type="button">Save costing</button>
+      <p id="saveStatus" class="save-status" aria-live="polite">Changes are saved automatically in this browser.</p>
+    </article>
+  </section>
+  <footer>Made with care for your sweet business <span>♡</span></footer>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
